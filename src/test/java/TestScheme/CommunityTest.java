@@ -63,7 +63,22 @@ public class CommunityTest {
         response.then().spec(SpecBuilder.responseSpec);
         response.then().assertThat()
                 .body("data.inviter.userName", equalTo(DataHelper.userName));
+        String respJson = response.getBody().asString();
+        String uuidInvite = from(respJson).get("data.uuid");
+        Response delResponse = RestAssured.given().spec(SpecBuilder.requestSpecFull)
+                .when().delete(TestHelperURIData.INVITES + "/" + uuidInvite);
+        response.then().spec(SpecBuilder.responseSpecBody);
     }
-
-
+    public static void addTaskType() {
+        Response response = RestAssured.given().spec(SpecBuilder.requestSpecFull).body(TestHelperBodyData.task).queryParam(getRoomUUID())
+                .when().post(TestHelperURIData.TASK_TYPE);
+        response.then().spec(SpecBuilder.responseSpec);
+        response.then().assertThat()
+                .body("data.name", equalTo(DataHelper.nameOfTask));
+    }
+    public static void inviteToCall() {
+        Response response = RestAssured.given().spec(SpecBuilder.requestSpecFull).body(TestHelperBodyData.userLinkEmail)
+                .when().post(TestHelperURIData.CALL_INVITES);
+        response.then().spec(SpecBuilder.responseSpecBody);
+    }
 }

@@ -58,4 +58,19 @@ public class AuthTest {
         response.then().spec(SpecBuilder.responseSpecUnauth)
                 .body(containsString("Credentials are wrong"));
     }
+    public static void createAndDeleteContact() {
+        Response response = RestAssured.given().spec(SpecBuilder.requestSpecFull).body(TestHelperBodyData.contact)
+                .when().post(TestHelperURIData.CONTACTS);
+        response.then().spec(SpecBuilder.responseSpec);
+        Response delResponse = RestAssured.given().spec(SpecBuilder.requestSpecFull)
+                .when().delete(TestHelperURIData.DEL_CONTACT);
+        delResponse.then().spec(SpecBuilder.responseSpecBody);
+    }
+    public static void generateAvatar() {
+        Response response = RestAssured.given().spec(SpecBuilder.requestSpecFull).body(TestHelperBodyData.avatar)
+                .when().post(TestHelperURIData.AVATAR);
+        response.then().spec(SpecBuilder.responseSpec);
+        response.then().assertThat()
+                .body("data.type", equalTo("IMAGE"));
+    }
 }

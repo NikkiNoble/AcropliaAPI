@@ -5,6 +5,7 @@ import TestHelpers.TestHelperURIData;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import static io.restassured.path.json.JsonPath.from;
+import static org.hamcrest.Matchers.equalTo;
 
 public class ChatTest {
     private static Response returnResponseChat() {
@@ -15,8 +16,9 @@ public class ChatTest {
         Response response = returnResponseChat();
         response.then().statusCode(200);
         String respJson = response.getBody().asString();
-        System.out.println(respJson);
-        System.out.println(TestHelperURIData.CHAT);
+        response.then().spec(SpecBuilder.responseSpec);
+        response.then().assertThat()
+                .body("data.type", equalTo("USER_TEXT"));
     }
     public static void deleteMessage() {
         String wrkUuid = TestHelperURIData.workspaceUUID;

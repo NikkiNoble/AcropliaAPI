@@ -5,7 +5,6 @@ import TestHelpers.TestHelperURIData;
 import TestHelpers.TestHelperBodyData;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-
 import static org.hamcrest.Matchers.equalTo;
 import static io.restassured.path.json.JsonPath.from;
 
@@ -51,6 +50,5 @@ public class NodesTest {
         Response response = RestAssured.given().spec(SpecBuilder.requestSpecFull)
                 .when().delete(TestHelperURIData.CANVAS_DELETE);
         response.then().spec(SpecBuilder.responseSpecBody);
-        TestHelperBodyData.printBody(response);
     }
 }

@@ -1,17 +1,7 @@
 package TestHelpers;
 
-import io.restassured.RestAssured;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-
-import static io.restassured.path.json.JsonPath.from;
 
 public class DataHelper {
     static String userPhone = "+79276838772";
@@ -30,5 +20,11 @@ public class DataHelper {
     public static String userName = "acroplia_avtobot";
     static List<String> roomsList = Arrays.asList("GROUP", "P2P", "TASK");
     static String canvasTitle = "Canvas";
-
+    public static String nameOfTask = "Task";
+    static String userID = "7c4f3304-b437-463f-892d-e183e689eb35";
+    static String otherUserName = "Nastya";
+    static String communityID = "/c2e35b62-4615-46df-b03c-004a657fe18f";
+    static String testName = "Vasya";
+    static String testLastName = "Pupkin";
+    static String roomID = "052892e5-99d1-4708-bad1-faf7c2392ecd";
 }
