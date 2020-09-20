@@ -9,7 +9,7 @@ public class TestHelperURIData {
     public static final String MAGIC_PHONE = MAGIC + "/phone";
     public static final String MAGIC_EMAIL = MAGIC + "/email";
     public static final String COMMUNITIES = "communities";
-    public static final String TEST_COMMUNITY = COMMUNITIES + DataHelper.communityID;
+    private static final String TEST_COMMUNITY = COMMUNITIES + DataHelper.communityID;
     private static String communityUUID = CommunityTest.getCommunityUUID();
     public static final String COM_DELETE = COMMUNITIES + "/" + communityUUID;
     public static final String WORKSPACES = TEST_COMMUNITY + "/workspaces";

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.freefair.lombok' version '4.1.3'
 }
 
 group 'acropliaAPI'
@@ -18,7 +19,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:4.3.1'
     testImplementation 'io.rest-assured:json-path:4.3.1'
     testImplementation 'io.rest-assured:json-schema-validator:4.3.1'
-
+    compile group: 'org.json', name: 'json', version: '20180813'
 }
 
 test {
